@@ -15,7 +15,7 @@
         
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e0f7fa 0%, #f8bbd0 100%);
+            background: linear-gradient(135deg, #f5f0ff 0%, #ffe6f2 100%);
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -33,13 +33,11 @@
             position: relative;
             overflow: hidden;
             border-radius: 24px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
         
         .card {
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
+            background: transparent;
             height: 100%;
             padding: 25px 20px;
             position: relative;
@@ -47,7 +45,7 @@
             overflow-x: hidden;
         }
         
-        .parallax-container {
+        .background-images {
             position: absolute;
             top: 0;
             left: 0;
@@ -57,22 +55,30 @@
             overflow: hidden;
         }
         
-        .parallax-bg {
-            background: url('dlVdWhX2TUeuyOn5lJxUiw.jpg') center/cover no-repeat;
+        .background-image {
             position: absolute;
-            top: -10%;
-            left: -10%;
-            width: 120%;
-            height: 120%;
-            opacity: 0.15;
-            filter: blur(5px);
+            width: 100%;
+            height: 50%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.7;
+        }
+        
+        .bg-image-1 {
+            top: 0;
+            background-image: url('https://images.unsplash.com/photo-1534528741774-4da4d5f84a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        }
+        
+        .bg-image-2 {
+            bottom: 0;
+            background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
         }
         
         .shape {
             position: absolute;
             border-radius: 50%;
             filter: blur(40px);
-            opacity: 0.5;
+            opacity: 0.3;
             animation: float 8s ease-in-out infinite;
         }
         
@@ -98,6 +104,12 @@
             text-align: center;
             margin-bottom: 25px;
             position: relative;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.85);
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         h1 {
@@ -123,10 +135,6 @@
             line-height: 1.5;
             margin-bottom: 25px;
             text-align: center;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.4);
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
         }
         
         .details {
@@ -137,7 +145,7 @@
         }
         
         .detail-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 18px;
             padding: 20px;
             text-align: center;
@@ -145,7 +153,9 @@
             transition: all 0.4s ease;
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .detail-card::before {
@@ -158,7 +168,7 @@
             background: linear-gradient(45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
             z-index: -1;
             border-radius: 25px;
-            opacity: 0.3;
+            opacity: 0.2;
             filter: blur(15px);
         }
         
@@ -177,14 +187,16 @@
         }
         
         .rsvp-section {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.4));
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 18px;
             padding: 20px;
             margin-top: 20px;
             box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         .rsvp-section::before {
@@ -330,9 +342,11 @@
             font-size: 0.9rem;
             color: #6a5acd;
             padding: 12px;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.85);
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
         
         @keyframes float {
@@ -385,37 +399,14 @@
         .card::-webkit-scrollbar-thumb:hover {
             background: rgba(107, 104, 238, 0.7);
         }
-        
-        /* Instructions styling */
-        .instructions {
-            background: rgba(255, 255, 255, 0.5);
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 20px;
-            font-size: 0.8rem;
-        }
-        
-        .instructions h3 {
-            color: #6a5acd;
-            margin-bottom: 8px;
-            font-size: 1rem;
-        }
-        
-        .formsubmit-instructions {
-            background: rgba(255, 243, 205, 0.5);
-            border-left: 4px solid #ffc107;
-            padding: 12px;
-            margin: 15px 0;
-            border-radius: 8px;
-            font-size: 0.8rem;
-        }
     </style>
 </head>
 <body>
     <div class="mobile-container">
         <div class="card">
-            <div class="parallax-container">
-                <div class="parallax-bg" id="parallaxBg"></div>
+            <div class="background-images">
+                <div class="background-image bg-image-1"></div>
+                <div class="background-image bg-image-2"></div>
                 <div class="shape shape-1"></div>
                 <div class="shape shape-2"></div>
             </div>
@@ -511,8 +502,6 @@
                     <p>Thank you for your RSVP! We've received your response.</p>
                 </div>
             </div>
-            
-            
             
             <div class="footer">
                 <p>For questions: Tyraem18@gmail.com or (442) 319-9125</p>

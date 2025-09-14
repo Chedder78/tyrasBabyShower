@@ -28,7 +28,6 @@
         .container {
             width: 100%;
             max-width: 900px;
-            perspective: 1000px;
         }
         
         .card {
@@ -42,8 +41,7 @@
                         0 10px 20px rgba(255, 255, 255, 0.5) inset;
             position: relative;
             overflow: hidden;
-            transform: none !important;
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            transition: box-shadow 0.5s ease;
         }
         
         .card:hover {
@@ -51,14 +49,26 @@
                         0 10px 20px rgba(255, 255, 255, 0.6) inset;
         }
         
-        .parallax-bg {
+        .parallax-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -1;
-            opacity: 0.2;
+            overflow: hidden;
+            border-radius: 25px;
+        }
+        
+        .parallax-bg {
+            background: url('') center/cover no-repeat;
+            position: absolute;
+            top: -10%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            opacity: 0.15;
+            filter: blur(5px);
         }
         
         .shape {
@@ -85,15 +95,6 @@
             left: -80px;
             background: linear-gradient(45deg, #a1c4fd, #c2e9fb);
             animation-delay: 1s;
-        }
-        
-        .shape-3 {
-            width: 180px;
-            height: 180px;
-            top: 50%;
-            left: 70%;
-            background: linear-gradient(45deg, #84fab0, #8fd3f4);
-            animation-delay: 2s;
         }
         
         .header {
@@ -384,16 +385,6 @@
             animation-delay: 3s;
         }
         
-        .bounce {
-            animation: bounce 2s ease infinite;
-        }
-        
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
-        }
-        
         .pulse {
             animation: pulse 2s infinite;
         }
@@ -404,41 +395,36 @@
             100% { transform: scale(1); }
         }
         
-        .interactive-element {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
-            opacity: 0.7;
-            box-shadow: 0 0 20px rgba(255, 154, 158, 0.7);
-            z-index: 1;
-            pointer-events: none;
+        .instructions {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            font-size: 0.9rem;
         }
         
-        .decoration {
-            position: absolute;
-            font-size: 2rem;
-            opacity: 0.2;
-            z-index: 0;
-            pointer-events: none;
+        .instructions h3 {
+            color: #6a5acd;
+            margin-bottom: 10px;
+        }
+        
+        .formsubmit-instructions {
+            background: rgba(255, 243, 205, 0.5);
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card">
-            <div class="parallax-bg">
+            <div class="parallax-container">
+                <div class="parallax-bg" id="parallaxBg"></div>
                 <div class="shape shape-1"></div>
                 <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
             </div>
-            
-            <!-- Decorative elements -->
-            <div class="decoration" style="top: 40px; left: 40px;">👶</div>
-            <div class="decoration" style="top: 120px; right: 60px;">🍼</div>
-            <div class="decoration" style="bottom: 80px; left: 70px;">🧸</div>
-            <div class="decoration" style="bottom: 150px; right: 50px;">🎁</div>
             
             <div class="header">
                 <h1>Baby Shower Celebration</h1>
@@ -467,7 +453,7 @@
                     <i class="fas fa-gift"></i>
                     <h3>Gift Registry</h3>
                     <p>Amazon & Target</p>
-                    <p>Search: Baby Smith</p>
+                    <p>Search: amazon or walmart should provideyou with the search link and can be added here later</p>
                 </div>
             </div>
             
@@ -475,7 +461,14 @@
                 <h2 class="rsvp-title">RSVP</h2>
                 <p style="text-align: center; margin-bottom: 25px;">Please respond by June 1st</p>
                 
-                <form id="rsvpForm">
+                <!-- FormSubmit.co Form - Replace YOUR_EMAIL with your actual email -->
+                <form action="https://formsubmit.co/Tyraem18@gmail.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Baby Shower RSVP!">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
+                    <input type="hidden" name="_captcha" value="false">
+                    
                     <div class="form-group">
                         <label for="name">Your Name</label>
                         <input type="text" id="name" name="name" required placeholder="First and Last Name">
@@ -501,11 +494,11 @@
                         <label>Will you be attending?</label>
                         <div class="attendance-options">
                             <div class="attendance-option">
-                                <input type="radio" id="yes" name="attendance" value="yes" required>
+                                <input type="radio" id="yes" name="attendance" value="Yes, I'll be there!" required>
                                 <label for="yes">Yes, I'll be there!</label>
                             </div>
                             <div class="attendance-option">
-                                <input type="radio" id="no" name="attendance" value="no">
+                                <input type="radio" id="no" name="attendance" value="Sorry, can't make it">
                                 <label for="no">Sorry, can't make it</label>
                             </div>
                         </div>
@@ -525,106 +518,28 @@
                 </div>
             </div>
             
+            
             <div class="footer">
-                <p>For any questions, please contact us at: babysmith@example.com or (555) 123-4567</p>
+                <p>For any questions, please contact us at: Tyraem18@gmail.com or (555) 123-4567</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Interactive elements that follow mouse
-        document.addEventListener('mousemove', (e) => {
-            const interactiveElements = document.querySelectorAll('.interactive-element');
-            interactiveElements.forEach(el => {
-                const speed = parseInt(el.getAttribute('data-speed')) || 5;
-                const x = (window.innerWidth - e.pageX * speed) / 100;
-                const y = (window.innerHeight - e.pageY * speed) / 100;
-                el.style.transform = `translate(${x}px, ${y}px)`;
+        // Simple animation for form elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const formElements = document.querySelectorAll('.form-group');
+            formElements.forEach((element, index) => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, 100 + (index * 100));
             });
         });
-        
-        // Create interactive elements
-        function createInteractiveElements() {
-            const card = document.querySelector('.card');
-            const colors = ['#ff9a9e', '#fad0c4', '#a1c4fd', '#c2e9fb', '#84fab0'];
-            
-            for (let i = 0; i < 5; i++) {
-                const el = document.createElement('div');
-                el.classList.add('interactive-element');
-                el.style.background = `linear-gradient(45deg, ${colors[i]}, ${colors[(i+1)%colors.length]})`;
-                el.style.width = `${20 + Math.random() * 30}px`;
-                el.style.height = el.style.width;
-                el.style.top = `${Math.random() * 100}%`;
-                el.style.left = `${Math.random() * 100}%`;
-                el.style.opacity = `${0.3 + Math.random() * 0.4}`;
-                el.setAttribute('data-speed', `${2 + Math.random() * 5}`);
-                card.appendChild(el);
-            }
-        }
-        
-        createInteractiveElements();
-        
-        // Form submission handling
-        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // In a real implementation, you would send this data to a server
-            const formData = new FormData(this);
-            const attendance = formData.get('attendance') === 'yes' ? 'attending' : 'not attending';
-            
-            console.log('RSVP Received:');
-            console.log('Name:', formData.get('name'));
-            console.log('Email:', formData.get('email'));
-            console.log('Guests:', formData.get('guests'));
-            console.log('Attendance:', attendance);
-            console.log('Message:', formData.get('message'));
-            
-            // Show confirmation message
-            const confirmation = document.getElementById('confirmation');
-            confirmation.style.display = 'block';
-            
-            // Add celebration effect
-            celebrate();
-            
-            // Reset form
-            this.reset();
-            
-            // Scroll to confirmation message
-            confirmation.scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // Celebration effect
-        function celebrate() {
-            const celebrations = ['🎉', '🎊', '🎈', '👶', '🧸', '🍼'];
-            const card = document.querySelector('.card');
-            
-            for (let i = 0; i < 20; i++) {
-                const el = document.createElement('div');
-                el.classList.add('decoration');
-                el.textContent = celebrations[Math.floor(Math.random() * celebrations.length)];
-                el.style.position = 'absolute';
-                el.style.fontSize = `${1.5 + Math.random()}rem`;
-                el.style.opacity = '1';
-                el.style.left = `${Math.random() * 100}%`;
-                el.style.top = `${Math.random() * 100}%`;
-                el.style.zIndex = '100';
-                el.style.transform = 'translateY(0)';
-                el.style.transition = 'all 1s ease';
-                
-                card.appendChild(el);
-                
-                // Animate
-                setTimeout(() => {
-                    el.style.transform = 'translateY(-100px)';
-                    el.style.opacity = '0';
-                }, 50);
-                
-                // Remove after animation
-                setTimeout(() => {
-                    el.remove();
-                }, 1000);
-            }
-        }
         
         // Add subtle animation to detail cards on scroll
         const observerOptions = {

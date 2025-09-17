@@ -421,9 +421,195 @@
         .card::-webkit-scrollbar-thumb:hover {
             background: rgba(107, 104, 238, 0.7);
         }
+        
+        /* New styles for enhancements */
+        #countdown {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        
+        .countdown-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px;
+            border-radius: 10px;
+            min-width: 60px;
+        }
+        
+        .countdown-item span {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #6a5acd, #ff9a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .countdown-item small {
+            display: block;
+            font-size: 0.7rem;
+            color: #6a5acd;
+        }
+        
+        .registry-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            justify-content: center;
+        }
+        
+        .registry-btn {
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .registry-btn.amazon {
+            background: #ff9a9e;
+            color: white;
+        }
+        
+        .registry-btn.target {
+            background: #6a5acd;
+            color: white;
+        }
+        
+        .registry-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .error-message {
+            color: #ff9a9e;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+        
+        .guestbook-section {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            padding: 20px;
+            margin-top: 25px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .guestbook-title {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #6a5acd;
+        }
+        
+        .guestbook-form textarea {
+            width: 100%;
+            padding: 12px;
+            border-radius: 12px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            resize: vertical;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .wish-btn {
+            background: linear-gradient(45deg, #84fab0, #8fd3f4);
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .wish-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(132, 250, 176, 0.4);
+        }
+        
+        .wishes-container {
+            margin-top: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .wish-item {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f0ff 0%, #ffe6f2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-baby {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #6a5acd;
+            animation: bounce 1s infinite alternate;
+        }
+        
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-20px); }
+        }
+        
+        .loader p {
+            color: #6a5acd;
+            font-weight: 500;
+        }
+        
+        @keyframes confetti-fall {
+            0% {
+                opacity: 1;
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) rotate(720deg);
+            }
+        }
+        
+        .custom-illustration {
+            margin: 0 auto 15px;
+            width: 100px;
+            height: 80px;
+        }
     </style>
 </head>
 <body>
+    <!-- Loading Animation -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="loader-baby">
+                <i class="fas fa-baby"></i>
+            </div>
+            <p>Loading your invitation...</p>
+        </div>
+    </div>
+    
     <div class="mobile-container">
         <div class="parallax-container">
             <div class="parallax-layer layer-1"></div>
@@ -437,6 +623,14 @@
         <div class="card">
             <div class="content">
                 <div class="header">
+                    <!-- Custom Illustrated Header -->
+                    <div class="custom-illustration">
+                        <svg viewBox="0 0 300 150" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M100,20 C70,40 80,80 100,100 C120,120 160,110 180,80 C200,50 180,20 150,10 C120,0 130,0 100,20" fill="#f5e1ff" stroke="#6a6acd" stroke-width="2"/>
+                            <circle cx="120" cy="60" r="8" fill="#ff9a9e"/>
+                            <circle cx="160" cy="60" r="8" fill="#6a6acd"/>
+                        </svg>
+                    </div>
                     <h1>Baby Shower</h1>
                     <h2>You're Invited!</h2>
                     <div class="invite-text">
@@ -459,11 +653,39 @@
                         <p>123 Celebration Blvd</p>
                     </div>
                     
+                    <!-- Countdown Timer -->
+                    <div class="detail-card">
+                        <i class="fas fa-clock"></i>
+                        <h3>Countdown</h3>
+                        <div id="countdown">
+                            <div class="countdown-item">
+                                <span id="days">00</span>
+                                <small>Days</small>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="hours">00</span>
+                                <small>Hours</small>
+                            </div>
+                            <div class="countdown-item">
+                                <span id="minutes">00</span>
+                                <small>Minutes</small>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Interactive Gift Registry -->
                     <div class="detail-card floating floating-3">
                         <i class="fas fa-gift"></i>
                         <h3>Gift Registry</h3>
-                        <p>Amazon & Target</p>
-                        <p>Search: Baby Smith</p>
+                        <p>Click to view our registries</p>
+                        <div class="registry-links">
+                            <a href="https://www.amazon.com/babyregistry" target="_blank" class="registry-btn amazon">
+                                <i class="fab fa-amazon"></i> Amazon
+                            </a>
+                            <a href="https://www.target.com/babyregistry" target="_blank" class="registry-btn target">
+                                <i class="fas fa-bullseye"></i> Target
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
@@ -472,7 +694,7 @@
                     <p style="text-align: center; margin-bottom: 20px; font-size: 0.95rem;">Please respond by June 1st</p>
                     
                     <!-- FormSubmit.co Form - Replace YOUR_EMAIL with your actual email -->
-                    <form action="https://formsubmit.co/Tyraem18@gmail.com" method="POST">
+                    <form action="https://formsubmit.co/Tyraem18@gmail.com" method="POST" id="rsvp-form">
                         <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_subject" value="New Baby Shower RSVP!">
                         <input type="hidden" name="_template" value="table">
@@ -528,6 +750,18 @@
                     </div>
                 </div>
                 
+                <!-- Digital Guestbook -->
+                <div class="guestbook-section">
+                    <h3 class="guestbook-title">Leave a Wish for Baby</h3>
+                    <div class="guestbook-form">
+                        <textarea id="guestbook-message" placeholder="Share your well wishes or advice for the parents..." rows="3"></textarea>
+                        <button onclick="addWish()" class="wish-btn">Add Your Wish</button>
+                    </div>
+                    <div class="wishes-container">
+                        <!-- Wishes will be added here -->
+                    </div>
+                </div>
+                
                 <div class="footer">
                     <p>For questions: Tyraem18@gmail.com or (442) 319-9125</p>
                 </div>
@@ -574,21 +808,169 @@
             observer.observe(card);
         });
         
-        // Handle form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        // Confetti creation function
+        function createConfetti() {
+            const colors = ['#ff9a9e', '#fad0c4', '#a1c4fd', '#c2e9fb', '#84fab0'];
+            const container = document.querySelector('.mobile-container');
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.position = 'absolute';
+                confetti.style.width = '8px';
+                confetti.style.height = '8px';
+                confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                confetti.style.borderRadius = '0px';
+                confetti.style.top = '0';
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.opacity = '0';
+                confetti.style.zIndex = '9999';
+                
+                // Animation
+                confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s ease-in ${Math.random() * 1}s forwards`;
+                
+                container.appendChild(confetti);
+                
+                // Remove after animation
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+        
+        // Countdown timer
+        function updateCountdown() {
+            const showerDate = new Date('June 15, 2024 14:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = showerDate - now;
+            
+            if (distance < 0) {
+                document.getElementById('countdown').innerHTML = "<p>The celebration has begun!</p>";
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            
+            document.getElementById('days').textContent = days.toString().padStart(2, '0');
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+        
+        // Enhanced form validation
+        document.getElementById('rsvp-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Show confirmation message
-            const confirmation = document.getElementById('confirmation');
-            confirmation.style.display = 'block';
+            // Enhanced validation
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const guests = document.getElementById('guests').value;
+            const attendance = document.querySelector('input[name="attendance"]:checked');
             
-            // Scroll to confirmation message
+            let isValid = true;
+            
+            if (!name || name.length < 3) {
+                highlightError(document.getElementById('name'), 'Please enter your full name');
+                isValid = false;
+            }
+            
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                highlightError(document.getElementById('email'), 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            if (!guests) {
+                highlightError(document.getElementById('guests'), 'Please select number of guests');
+                isValid = false;
+            }
+            
+            if (!attendance) {
+                const options = document.querySelector('.attendance-options');
+                options.style.border = '2px solid #ff9a9e';
+                options.style.borderRadius = '12px';
+                isValid = false;
+            }
+            
+            if (isValid) {
+                // Show confirmation message
+                const confirmation = document.getElementById('confirmation');
+                confirmation.style.display = 'block';
+                
+                // Create confetti celebration
+                createConfetti();
+                
+                // Scroll to confirmation message
+                setTimeout(() => {
+                    confirmation.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+                
+                // Submit the form to FormSubmit
+                this.submit();
+            }
+        });
+        
+        function highlightError(element, message) {
+            element.style.border = '2px solid #ff9a9e';
+            element.style.boxShadow = '0 0 10px rgba(255, 154, 158, 0.5)';
+            
+            // Remove any existing error message
+            const existingError = element.parentNode.querySelector('.error-message');
+            if (existingError) {
+                existingError.remove();
+            }
+            
+            // Add error message
+            const errorElement = document.createElement('div');
+            errorElement.className = 'error-message';
+            errorElement.style.color = '#ff9a9e';
+            errorElement.style.fontSize = '0.8rem';
+            errorElement.style.marginTop = '5px';
+            errorElement.textContent = message;
+            
+            element.parentNode.appendChild(errorElement);
+            
+            // Remove highlighting after a delay
             setTimeout(() => {
-                confirmation.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
+                element.style.border = '';
+                element.style.boxShadow = '';
+                errorElement.remove();
+            }, 3000);
+        }
+        
+        // Guestbook functionality
+        function addWish() {
+            const message = document.getElementById('guestbook-message').value.trim();
+            if (!message) return;
             
-            // Submit the form to FormSubmit
-            this.submit();
+            const wishItem = document.createElement('div');
+            wishItem.className = 'wish-item';
+            wishItem.textContent = message;
+            
+            document.querySelector('.wishes-container').prepend(wishItem);
+            document.getElementById('guestbook-message').value = '';
+            
+            // Animate the new wish
+            wishItem.style.opacity = '0';
+            wishItem.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                wishItem.style.transition = 'all 0.5s ease';
+                wishItem.style.opacity = '1';
+                wishItem.style.transform = 'translateY(0)';
+            }, 10);
+        }
+        
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loader').style.display = 'none';
+                }, 500);
+            }, 1500);
         });
         
         // Parallax scrolling effect

@@ -409,64 +409,47 @@
         
         <!-- RSVP Section -->
         <div class="rsvp-section">
-                    <h2 class="rsvp-title">RSVP</h2>
-                    <p style="text-align: center; margin-bottom: 20px; font-size: 1rem;">Please respond by June 1st</p>
-                    
-                    <!-- FormSubmit.co Form - Replace YOUR_EMAIL with your actual email -->
-                    <form action="https://formsubmit.co/Tyraem18@gmail.com" method="POST" id="rsvp-form">
-                        <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_subject" value="New Baby Shower RSVP!">
-                        <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="#">
-                        <input type="hidden" name="_captcha" value="false">
-                        
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="First and Last Name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="guests">Number of Guests</label>
-                            <select id="guests" name="guests" required>
-                                <option value="" disabled selected>Select number</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Will you be attending?</label>
-                            <div class="attendance-options">
-                                <div class="attendance-option">
-                                    <input type="radio" id="yes" name="attendance" value="Yes, I'll be there!" required>
-                                    <label for="yes">Yes, I'll be there!</label>
-                                </div>
-                                <div class="attendance-option">
-                                    <input type="radio" id="no" name="attendance" value="Sorry, can't make it">
-                                    <label for="no">Sorry, can't make it</label>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message (Optional)</label>
-                            <textarea id="message" name="message" rows="3" placeholder="Send well wishes or let us know about dietary restrictions..."></textarea>
-                        </div>
-                        
-                        <button type="submit" class="pulse">Submit RSVP</button>
-                    </form>
-                    
-                    <div class="confirmation" id="confirmation">
-                        <i class="fas fa-check-circle"></i>
-                        <p>Thank you for your RSVP! We've received your response.</p>
+            <h2>RSVP</h2>
+            <form id="rsvp-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" required placeholder="First and Last Name">
                     </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="guests">Number of Guests</label>
+                        <select id="guests" name="guests" required>
+                            <option value="" disabled selected>Select number</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attendance">Will you be attending?</label>
+                        <select id="attendance" name="attendance" required>
+                            <option value="" disabled selected>Please select</option>
+                            <option value="yes">Yes, I'll be there!</option>
+                            <option value="no">Sorry, can't make it</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Message (Optional)</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Send well wishes or let us know about dietary restrictions..."></textarea>
+                </div>
+                
+                <button type="submit">Submit RSVP</button>
+            </form>
         </div>
         
         <!-- Footer -->

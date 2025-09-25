@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+l<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -84,25 +84,48 @@
             gap: 25px;
         }
         
-        /* Card Styles */
+        /* Card Styles with Image Backgrounds */
         .card {
-            background: rgba(255, 255, 255, 0.8);
+            background-size: cover;
+            background-position: center;
             border-radius: 18px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
             border: 1px solid rgba(255, 255, 255, 0.5);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
+            min-height: 300px;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            border-radius: 18px;
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
         }
         
         .card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
         
         .card i {
@@ -124,11 +147,42 @@
         .card p {
             color: #666;
             line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        
+        .card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background: linear-gradient(135deg, #8a63d2 0%, #ff7bac 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(138, 99, 210, 0.3);
+        }
+        
+        .card a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(138, 99, 210, 0.4);
+        }
+        
+        /* Specific card background images */
+        .card-baby {
+            background-image: url('https://images.unsplash.com/photo-1534528741774-4da4d5f84a52?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        }
+        
+        .card-location {
+            background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+        }
+        
+        .card-gifts {
+            background-image: url('https://images.unsplash.com/photo-1544006657-5fa0aeb2c5cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
         }
         
         /* Details Section */
         .details-card {
-            grid-column: 1 / -1;
             background: rgba(255, 255, 255, 0.9);
             border-radius: 18px;
             padding: 40px;
@@ -313,6 +367,17 @@
             animation-delay: 2s;
         }
         
+        /* Confetti canvas */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
         /* Responsive Design */
         @media (max-width: 768px) {
             .header h1 {
@@ -331,17 +396,6 @@
                 grid-template-columns: 1fr;
             }
         }
-        
-        /* Confetti canvas */
-        #confetti-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
     </style>
 </head>
 <body>
@@ -357,30 +411,38 @@
         <!-- Header -->
         <div class="header">
             <h1>Baby Shower Celebration</h1>
-            <p>Join us in celebrating the upcoming arrival of our little one! Your presence would mean the world to us as we embark on this beautiful journey of parenthood.</p>
+            <p>Join us in celebrating the upcoming arrival of our little boy! Your presence would mean the world to us as we embark on this beautiful journey of parenthood.</p>
         </div>
         
         <!-- Content Grid -->
         <div class="content-grid">
             <!-- Card 1 -->
-            <div class="card floating" style="animation-delay: 0s;">
-                <i class="fas fa-baby"></i>
-                <h3>It's a Boy!</h3>
-                <p>We're excited to welcome our baby boy into the world. Come celebrate this special moment with us!</p>
+            <div class="card card-baby floating" style="animation-delay: 0s;">
+                <div class="card-content">
+                    <i class="fas fa-baby"></i>
+                    <h3>It's a Boy!</h3>
+                    <p>We're excited to welcome our baby boy into the world. Come celebrate this special moment with us!</p>
+                </div>
             </div>
             
             <!-- Card 2 -->
-            <div class="card floating" style="animation-delay: 1s;">
-                <i class="fas fa-gift"></i>
-                <h3>Gift Registry</h3>
-                <p>We're registered at Amazon and Target. Your thoughtful gifts are greatly appreciated!</p>
+            <div class="card card-location floating" style="animation-delay: 1s;">
+                <div class="card-content">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location & Time</h3>
+                    <p>Saturday at 2:00 PM<br>Hosted at Cylorn Twogood's home</p>
+                    <p>1330 Burris Ct, Beaumont CA 92223</p>
+                </div>
             </div>
             
             <!-- Card 3 -->
-            <div class="card floating" style="animation-delay: 2s;">
-                <i class="fas fa-heart"></i>
-                <h3>Special Day</h3>
-                <p>This day is all about love, joy, and celebrating new beginnings. We can't wait to share it with you!</p>
+            <div class="card card-gifts floating" style="animation-delay: 2s;">
+                <div class="card-content">
+                    <i class="fas fa-gift"></i>
+                    <h3>Gift Registry</h3>
+                    <p>We're registered at Amazon. Your thoughtful gifts are greatly appreciated!</p>
+                    <a href="https://www.amazon.com/baby-reg/tyra-casey-march-2026-victorville/1F6MEL9MPPTF3?ref_=cm_sw_r_apin_dp_PC9W5CY4RZGMAHVB651V&language=en-US" target="_blank">View Registry</a>
+                </div>
             </div>
         </div>
         
@@ -390,13 +452,13 @@
                 <div class="detail-item">
                     <i class="fas fa-calendar-alt"></i>
                     <h4>Date & Time</h4>
-                    <p>Saturday, June 15th, 2024<br>2:00 PM - 5:00 PM</p>
+                    <p>Saturday, March 2026<br>2:00 PM</p>
                 </div>
                 
                 <div class="detail-item">
-                    <i class="fas fa-map-marker-alt"></i>
+                    <i class="fas fa-home"></i>
                     <h4>Location</h4>
-                    <p>Garden Pavilion<br>123 Celebration Blvd<br>Sunnyville, CA 90210</p>
+                    <p>Hosted at Cylorn Twogood's home<br>1330 Burris Ct<br>Beaumont, CA 92223</p>
                 </div>
                 
                 <div class="detail-item">
@@ -454,8 +516,8 @@
         
         <!-- Footer -->
         <div class="footer">
-            <p>For questions: Tyraem18@gmail.com or (442) 319-9125</p>
             <p>We can't wait to celebrate with you!</p>
+            <p>For questions: Tyraem18@gmail.com or (442) 319-9125</p>
         </div>
     </div>
 
@@ -526,6 +588,19 @@
                 if (name && email && guests && attendance) {
                     alert('Thank you for your RSVP! We look forward to celebrating with you.');
                     this.reset();
+                    
+                    // Create additional confetti for celebration
+                    for (let i = 0; i < 50; i++) {
+                        confetti.push({
+                            x: Math.random() * canvas.width,
+                            y: 0,
+                            size: Math.random() * 10 + 3,
+                            color: colors[Math.floor(Math.random() * colors.length)],
+                            speed: Math.random() * 5 + 2,
+                            angle: Math.random() * 360,
+                            rotation: Math.random() * 360
+                        });
+                    }
                 } else {
                     alert('Please fill out all required fields.');
                 }

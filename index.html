@@ -170,26 +170,46 @@
         
         /* Specific card background images */
         .card-baby {
-            background-image: url('Leonardo_Lightning_XL_macro_photography_of_a_tiny_baby_elephan_1.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-image: url('Leonardo_Lightning_XL_A_cute_tiny_little_elephant_celebrating_0.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
         }
         
         .card-location {
-            background-image: url('Leonardo_Lightning_XL_A_cute_tiny_little_elephant_celebrating_1.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-image: url('Leonardo_Lightning_XL_macro_photography_of_a_tiny_baby_elephan_1.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
         }
         
         .card-gifts {
-            background-image: url('Leonardo_Lightning_XL_macro_photography_of_a_tiny_baby_elephan_1 (1).jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
+            background-image: url('?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');
         }
         
         /* Details Section */
         .details-card {
-            background: rgba(255, 255, 255, 0.9);
+            background-size: cover;
+            background-position: center;
             border-radius: 18px;
             padding: 40px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .details-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            border-radius: 18px;
+        }
+        
+        .details-card-content {
+            position: relative;
+            z-index: 2;
         }
         
         .details-grid {
@@ -226,13 +246,33 @@
         
         /* RSVP Section */
         .rsvp-section {
-            background: rgba(255, 255, 255, 0.9);
+            background-size: cover;
+            background-position: center;
             border-radius: 18px;
             padding: 40px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .rsvp-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.85);
+            z-index: 1;
+            border-radius: 18px;
+        }
+        
+        .rsvp-content {
+            position: relative;
+            z-index: 2;
         }
         
         .rsvp-section h2 {
@@ -447,71 +487,75 @@
         </div>
         
         <!-- Details Section -->
-        <div class="details-card">
-            <div class="details-grid">
-                <div class="detail-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h4>Date & Time</h4>
-                    <p>Sunday, November 16th 2025<br>2:00 PM</p>
-                </div>
-                
-                <div class="detail-item">
-                    <i class="fas fa-home"></i>
-                    <h4>Location</h4>
-                    <p>Hosted at Cylorn Twogood's home<br>1330 Burris Ct<br>Beaumont, CA 92223</p>
-                </div>
-                
-                <div class="detail-item">
-                    <i class="fas fa-utensils"></i>
-                    <h4>Refreshments</h4>
-                    <p>Delicious snacks, drinks, and a beautiful baby-themed cake will be served!</p>
+        <div class="details-card" style="background-image: url('Leonardo_Anime_XL_A_cute_tiny_little_elephant_celebrating_its_3.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+            <div class="details-card-content">
+                <div class="details-grid">
+                    <div class="detail-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <h4>Date & Time</h4>
+                        <p>Sunday, November 16th 2025<br>2:00 PM</p>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-home"></i>
+                        <h4>Location</h4>
+                        <p>Hosted at Cylorn Twogood's home<br>1330 Burris Ct<br>Beaumont, CA 92223</p>
+                    </div>
+                    
+                    <div class="detail-item">
+                        <i class="fas fa-utensils"></i>
+                        <h4>Refreshments</h4>
+                        <p>Delicious snacks, drinks, and a beautiful baby-themed cake will be served!</p>
+                    </div>
                 </div>
             </div>
         </div>
         
         <!-- RSVP Section -->
-        <div class="rsvp-section">
-            <h2>RSVP</h2>
-            <form id="rsvp-form">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="name">Your Name</label>
-                        <input type="text" id="name" name="name" required placeholder="First and Last Name">
+        <div class="rsvp-section" style="background-image: url('Leonardo_Lightning_XL_macro_photography_of_a_tiny_baby_elephan_1 (1).jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+            <div class="rsvp-content">
+                <h2>RSVP</h2>
+                <form id="rsvp-form">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required placeholder="First and Last Name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" name="guests" required>
+                                <option value="" disabled selected>Select number</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="attendance">Will you be attending?</label>
+                            <select id="attendance" name="attendance" required>
+                                <option value="" disabled selected>Please select</option>
+                                <option value="yes">Yes, I'll be there!</option>
+                                <option value="no">Sorry, can't make it</option>
+                            </select>
+                        </div>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                        <label for="message">Message (Optional)</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Send well wishes or let us know about dietary restrictions..."></textarea>
                     </div>
                     
-                    <div class="form-group">
-                        <label for="guests">Number of Guests</label>
-                        <select id="guests" name="guests" required>
-                            <option value="" disabled selected>Select number</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="attendance">Will you be attending?</label>
-                        <select id="attendance" name="attendance" required>
-                            <option value="" disabled selected>Please select</option>
-                            <option value="yes">Yes, I'll be there!</option>
-                            <option value="no">Sorry, can't make it</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <label for="message">Message (Optional)</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Send well wishes or let us know about dietary restrictions..."></textarea>
-                </div>
-                
-                <button type="submit">Submit RSVP</button>
-            </form>
+                    <button type="submit">Submit RSVP</button>
+                </form>
+            </div>
         </div>
         
         <!-- Footer -->

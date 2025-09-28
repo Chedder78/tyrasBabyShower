@@ -511,56 +511,55 @@
             </div>
         </div>
 
-        
-            <!-- RSVP Section -->
-        <div class="rsvp-section" style="background-image: url('Leonardo_Lightning_XL_macro_photography_of_a_tiny_baby_elephan_1 (1).jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
-            <div class="rsvp-content">
-                <h2>RSVP</h2>
-                <form action="https://formsubmit.co/tifflem1@yahoo.com" method="POST">
-                <input type="hidden" name="_subject" value="New Baby Shower RSVP!">
-                <input type="hidden" name="_next" value="https://chedder78.github.io/tyrasBabyShower/thankYou.html">
-      
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" id="name" name="name" required placeholder="First and Last Name">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email Address</label>
-                            <input type="email" id="email" name="email" required placeholder="your.email@example.com">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="guests">Number of Guests</label>
-                            <select id="guests" name="guests" required>
-                                <option value="" disabled selected>Select number</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="attendance">Will you be attending?</label>
-                            <select id="attendance" name="attendance" required>
-                                <option value="" disabled selected>Please select</option>
-                                <option value="yes">Yes, I'll be there!</option>
-                                <option value="no">Sorry, can't make it</option>
-                            </select>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label for="message">Message (Optional)</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Send well wishes or let us know about dietary restrictions..."></textarea>
-                    </div>
-                    
-                    <button type="submit">Submit RSVP</button>
-                </form>
+        <!-- RSVP Section -->
+<div class="rsvp-section" style="background-image: url('Leonardo_Lightning_XL_macro_photography_of_a_tiny_baby_elephan_1 (1).jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80');">
+    <div class="rsvp-content">
+        <h2>RSVP</h2>
+        <form id="rsvp-form" action="https://formsubmit.co/tifflem1@yahoo.com" method="POST">
+            <input type="hidden" name="_subject" value="New Baby Shower RSVP!">
+            <input type="hidden" name="_next" value="https://chedder78.github.io/tyrasBabyShower/thankYou.html">
+            
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" required placeholder="First and Last Name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+                </div>
+                
+                <div class="form-group">
+                    <label for="guests">Number of Guests</label>
+                    <select id="guests" name="guests" required>
+                        <option value="" disabled selected>Select number</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="attendance">Will you be attending?</label>
+                    <select id="attendance" name="attendance" required>
+                        <option value="" disabled selected>Please select</option>
+                        <option value="yes">Yes, I'll be there!</option>
+                        <option value="no">Sorry, can't make it</option>
+                    </select>
+                </div>
             </div>
-        </div>
+            
+            <div class="form-group">
+                <label for="message">Message (Optional)</label>
+                <textarea id="message" name="message" rows="4" placeholder="Send well wishes or let us know about dietary restrictions..."></textarea>
+            </div>
+            
+            <button type="submit">Submit RSVP</button>
+        </form>
+    </div>
+</div>
         
         <!-- Footer -->
         <div class="footer">
@@ -568,98 +567,69 @@
             <p>For questions please contact Tiffany. email: tifflem1@yahoo.com mobile: 909-630-9970.</p>
         </div>
     </div>
-
-    <script>
-        // Confetti animation
-        document.addEventListener('DOMContentLoaded', function() {
-            const canvas = document.getElementById('confetti-canvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+<script>
+    // Confetti animation
+    document.addEventListener('DOMContentLoaded', function() {
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        // Confetti particles
+        const confetti = [];
+        const colors = ['#ffb6c1', '#d4bfff', '#a1c4fd', '#84fab0', '#ffd700'];
+        
+        // Create confetti particles
+        for (let i = 0; i < 150; i++) {
+            confetti.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 8 + 2,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                speed: Math.random() * 3 + 1,
+                angle: Math.random() * 360,
+                rotation: Math.random() * 360
+            });
+        }
+        
+        // Draw confetti
+        function drawConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Confetti particles
-            const confetti = [];
-            const colors = ['#ffb6c1', '#d4bfff', '#a1c4fd', '#84fab0', '#ffd700'];
-            
-            // Create confetti particles
-            for (let i = 0; i < 150; i++) {
-                confetti.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    size: Math.random() * 8 + 2,
-                    color: colors[Math.floor(Math.random() * colors.length)],
-                    speed: Math.random() * 3 + 1,
-                    angle: Math.random() * 360,
-                    rotation: Math.random() * 360
-                });
-            }
-            
-            // Draw confetti
-            function drawConfetti() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            confetti.forEach(particle => {
+                ctx.beginPath();
+                ctx.fillStyle = particle.color;
+                ctx.save();
+                ctx.translate(particle.x, particle.y);
+                ctx.rotate(particle.rotation * Math.PI / 180);
+                ctx.fillRect(-particle.size / 2, -particle.size / 2, particle.size, particle.size);
+                ctx.restore();
                 
-                confetti.forEach(particle => {
-                    ctx.beginPath();
-                    ctx.fillStyle = particle.color;
-                    ctx.save();
-                    ctx.translate(particle.x, particle.y);
-                    ctx.rotate(particle.rotation * Math.PI / 180);
-                    ctx.fillRect(-particle.size / 2, -particle.size / 2, particle.size, particle.size);
-                    ctx.restore();
-                    
-                    // Update particle position
-                    particle.y += particle.speed;
-                    particle.rotation += particle.speed / 2;
-                    
-                    // Reset particles that go off screen
-                    if (particle.y > canvas.height) {
-                        particle.y = 0 - particle.size;
-                        particle.x = Math.random() * canvas.width;
-                    }
-                });
+                // Update particle position
+                particle.y += particle.speed;
+                particle.rotation += particle.speed / 2;
                 
-                requestAnimationFrame(drawConfetti);
-            }
-            
-            drawConfetti();
-            
-            // Handle form submission
-            document.getElementById('rsvp-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Simple validation
-                const name = document.getElementById('name').value;
-                const email = document.getElementById('email').value;
-                const guests = document.getElementById('guests').value;
-                const attendance = document.getElementById('attendance').value;
-                
-                if (name && email && guests && attendance) {
-                    alert('Thank you for your RSVP! We look forward to celebrating with you.');
-                    this.reset();
-                    
-                    // Create additional confetti for celebration
-                    for (let i = 0; i < 50; i++) {
-                        confetti.push({
-                            x: Math.random() * canvas.width,
-                            y: 0,
-                            size: Math.random() * 10 + 3,
-                            color: colors[Math.floor(Math.random() * colors.length)],
-                            speed: Math.random() * 5 + 2,
-                            angle: Math.random() * 360,
-                            rotation: Math.random() * 360
-                        });
-                    }
-                } else {
-                    alert('Please fill out all required fields.');
+                // Reset particles that go off screen
+                if (particle.y > canvas.height) {
+                    particle.y = 0 - particle.size;
+                    particle.x = Math.random() * canvas.width;
                 }
             });
             
-            // Handle window resize
-            window.addEventListener('resize', function() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
+            requestAnimationFrame(drawConfetti);
+        }
+        
+        drawConfetti();
+        
+        // Handle window resize
+        window.addEventListener('resize', function() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
         });
-    </script>
-</body>
+        
+        // Remove the form submission handler since FormSubmit will handle it
+        // The form will now work with FormSubmit properly
+    });
+  </script>
+ </body>
 </html>
